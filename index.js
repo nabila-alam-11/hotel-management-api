@@ -255,6 +255,21 @@ async function deleteHotelById(hotelId) {
   }
 }
 
+app.delete("/hotels/:hotelId", async (req, res) => {
+  try {
+    const deletedHotel = await deleteHotelById(req.params.hotelId);
+    if (deletedHotel) {
+      res
+        .status(200)
+        .json({ message: "Book deleted successfully.", deletedHotel });
+    } else {
+      res.status(404).json({ error: "Hotel not found." });
+    }
+  } catch (error) {
+    res.status(500).json({ error: "Failed to delete hotel." });
+  }
+});
+
 // deleteHotelById("67970350bf0f78e2db145cb7")
 
 async function deleteHotelByPhoneNumber(phoneNumber) {
