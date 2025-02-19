@@ -249,7 +249,7 @@ async function updatedHotelNumber(phoneNumber, dataToUpdate) {
 async function deleteHotelById(hotelId) {
   try {
     const deletedHotel = await Hotels.findByIdAndDelete(hotelId);
-    console.log(deletedHotel);
+    return deletedHotel;
   } catch (error) {
     console.log("Error in deleting hotel: ", error);
   }
